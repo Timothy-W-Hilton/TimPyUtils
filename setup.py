@@ -10,7 +10,7 @@ config = {
     'download_url': 'thilton@ucmerced.edu',
     'author_email': 'thilton@ucmerced.edu',
     'version': '0.1',
-    'install_requires': ['nose'],
+    'install_requires': ['nose', 'numpy', 'matplotlib'],
     'packages': ['timutils'],
     'scripts': [],
     'name': 'timutils'
