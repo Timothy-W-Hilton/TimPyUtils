@@ -22,17 +22,28 @@ def setup_colormap(vmin, vmax, nlevs=5,
     OUTPUT
     tuple (cmap, norm) containing a matplotlib.colors.Colormap object
         and a matplotlib.colors.Normalize object.
+
+    USAGE EXAMPLE
+    data = np.random.rand(100, 100)  * 1000
+    mycmap, mynorm = colormap_nlevs.setup_colormap(
+        vmin=200.0, vmax=800.0, extend='max')
+    fig, ax = plt.subplots()
+    cm = ax.pcolormesh(data, cmap=mycmap, norm=mynorm)
+    plt.colorbar(cm)
+    plt.title('setup_colormap example\n'
+              'data values 0 to 1000; nlevs=5, vmin=200, vmax=800')
+    plt.show()
     """
     print 'setting up colormaps'
     # Pick some of the nicer colors from the palette...
     if extend is "neither":
         ncolors = nlevs - 1
     elif (extend is "min") or (extend is "max"):
-        ncolors = nlevs
+        ncolors = nlevs 
     elif extend is "both":
         ncolors = nlevs + 1
     levels = np.linspace(start=vmin, stop=vmax, num=nlevs)
-    colors = cmap(np.linspace(start=0.0, stop=1.0, num=levels.size))
+    colors = cmap(np.linspace(start=0.0, stop=1.0, num=ncolors))
     cmap, norm = from_levels_and_colors(levels, colors, extend=extend)
     return((cmap, norm))
 
@@ -61,17 +72,31 @@ def setup_colormap_with_zeroval(vmin, vmax, nlevs=5,
     OUTPUT
     tuple (cmap, norm) containing a matplotlib.colors.Colormap object
         and a matplotlib.colors.Normalize object.
+
+    USAGE EXAMPLE
+    data = np.random.rand(100, 100)  * 1000
+    mycmap, mynorm = colormap_nlevs.setup_colormap_with_zeroval(
+        vmin=data.min(), 
+        vmax=data.max(), 
+        nlevs=7,
+        extend='neither')
+    fig, ax = plt.subplots()
+    cm = ax.pcolormesh(data, cmap=mycmap, norm=mynorm)
+    plt.colorbar(cm)
+    plt.title('setup_colormap_with_zeroval example\n'
+              'data values 0 to 1000; nlevs=7')
+    plt.show()
     """
 
     # Pick some of the nicer colors from the palette...
     if extend is "neither":
-        ncolors = nlevs - 1
+        ncolors = nlevs 
     elif (extend is "min") or (extend is "max"):
-        ncolors = nlevs
-    elif extend is "both":
         ncolors = nlevs + 1
+    elif extend is "both":
+        ncolors = nlevs +  2
     levels = np.concatenate((np.array([0.0, 1e-8]),
                              np.linspace(start=vmin, stop=vmax, num=nlevs)[1:]))
-    colors = cmap(np.linspace(start=0.0, stop=1.0, num=levels.size))
+    colors = cmap(np.linspace(start=0.0, stop=1.0, num=ncolors))
     cmap, norm = from_levels_and_colors(levels, colors, extend=extend)
     return((cmap, norm))

@@ -1,3 +1,5 @@
+import numpy as np
+
 def scinot_format(x,pos=None):
     """
     format its argument x into scientific notation, using "mn x 10^ex"
