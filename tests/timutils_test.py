@@ -66,16 +66,22 @@ def test_setup_colormap():
               'data values 0 to 1000; nlevs=5, vmin=200, vmax=800')
     plt.show()
 
-def test_setup_colormap_with_zeroval():
+def setup_colormap_with_zeroval_nlevs(nlevs=7):
     data = np.random.rand(100, 100)  * 1000
     mycmap, mynorm = colormap_nlevs.setup_colormap_with_zeroval(
         vmin=data.min(), 
         vmax=data.max(), 
-        nlevs=7,
+        nlevs=nlevs,
         extend='neither')
     fig, ax = plt.subplots()
     cm = ax.pcolormesh(data, cmap=mycmap, norm=mynorm)
     plt.colorbar(cm)
     plt.title('setup_colormap_with_zeroval example\n'
-              'data values 0 to 1000; nlevs=7')
+              'data values 0 to 1000; nlevs={}'.format(nlevs))
     plt.show()
+
+def test_setup_colormap_with_zeroval_nlevs7():
+    setup_colormap_with_zeroval_nlevs(nlevs=5)
+
+def test_setup_colormap_with_zeroval_nlevs5():
+    setup_colormap_with_zeroval_nlevs(nlevs=10)
