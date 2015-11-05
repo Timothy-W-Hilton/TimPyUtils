@@ -4,7 +4,7 @@ from matplotlib.colors import Normalize
 
 class MidpointNormalize(Normalize):
     """
-    posted by Joe Kington to
+    adapted by Timothy W. Hilton from code posted by Joe Kington to
     http://stackoverflow.com/questions/20144529/shifted-colorbar-matplotlib
     accessed 19 January 2015
     """
@@ -19,14 +19,18 @@ class MidpointNormalize(Normalize):
         # I'm ignoring masked values and all kinds of edge cases to make a
         # simple example...
 
-        x = np.sort(np.concatenate([np.linspace(start=self.vmin,
-                                                stop=self.vmax,
-                                                num=self.nlevs-1),
-                                    [self.midpoint]]))
-        y = np.sort(np.concatenate([np.linspace(start=0.0,
-                                                stop=1.0,
-                                                num=self.nlevs-1),
-                                    [0.5]]))
+        x = np.concatenate([np.linspace(start=self.vmin,
+                                        stop=self.midpoint,
+                                        num=7),
+                            np.linspace(start=self.midpoint,
+                                        stop=self.vmax,
+                                        num=4)[1:]])
+        y = np.concatenate([np.linspace(start=0.0,
+                                        stop=0.5,
+                                        num=7),
+                            np.linspace(start=0.5,
+                                        stop=1.0,
+                                        num=4)[1:]])
         print 'x, y:', np.dstack([x, y])
         # x, y = [self.vmin, self.midpoint, self.vmax], [0, 0.5, 1]  #
         return np.ma.masked_array(np.interp(value, x, y))
