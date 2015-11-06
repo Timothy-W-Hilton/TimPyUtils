@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 from timutils import midpt_norm
 import numpy as np
 from matplotlib.colors import from_levels_and_colors
+import matplotlib.colors as mcolors
 
 
 def colorbar_from_cmap_norm(cmap, norm, cax, format, vals):
@@ -20,11 +21,28 @@ def colorbar_from_cmap_norm(cmap, norm, cax, format, vals):
     cb = plt.colorbar(dummy_scm, cax=cax, format=format)
     return(cb)
 
-data = np.random.randint(-120, 20, [124, 124])
-[data, data2] = np.meshgrid(np.linspace(-100, 20), np.linspace(-100, 20))
-n = midpt_norm.MidpointNormalize(vmin=-120, vmax=20, midpoint=0.0, nlevs=12)
+
+def test_offset_norm_img():
+    x = np.linspace(-2, 7)
+    y = np.linspace(-1*np.pi, np.pi)
+    X, Y = np.meshgrid(x, y)
+    Z = x * np.sin(Y)**2
+
+    fig, (ax1, ax2) = plt.subplots(ncols=2)
+    cmap = plt.cm.coolwarm
+    norm = midpt_norm.PiecewiseLinearNorm(vmin=-2, vcenter=0, vmax=7)
+
+    img1 = ax1.imshow(Z, cmap=cmap, norm=None)
+    cbar1 = fig.colorbar(img1, ax=ax1)
+
+    img2 = ax2.imshow(Z, cmap=cmap, norm=norm)
+    cbar2 = fig.colorbar(img2, ax=ax2)
+
+data = np.random.randint(-120, 20, [5, 5])
+# [data, data2] = np.meshgrid(np.linspace(-100, 20), np.linspace(-100, 20))
+n = midpt_norm.PiecewiseLinearNorm(vmin=-120, vmax=20, vcenter=0.0)
 fix, ax = plt.subplots(1, 2)
 cm = ax[0].pcolormesh(data, norm=n, cmap=plt.get_cmap('PuOr', 10))
-plt.colorbar(cm, cax=ax[1])
-# cb = colorbar_from_cmap_norm(plt.get_cmap('PuOr', 10), n, ax[1], '%0d', data)
+# plt.colorbar(cm, norm=n, cmap=plt.get_cmap('PuOr', 10))
+cb = colorbar_from_cmap_norm(plt.get_cmap('PuOr', 10), n, ax[1], '%0d', data)
 plt.show()
