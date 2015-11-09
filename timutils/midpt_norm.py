@@ -1,6 +1,63 @@
 import numpy as np
 import numpy.ma as ma
-from matplotlib.colors import Normalize
+import matplotlib.pyplot as plt
+from matplotlib.colors import Normalize, from_levels_and_colors
+
+
+def get_discrete_midpt_cmap_norm(vmin, vmax, midpoint,
+                                 bands_above_mdpt=5,
+                                 bands_below_mdpt=5,
+                                 this_cmap=plt.get_cmap('PuOr')):
+    """
+    returns a colormap and a matplotlib.colors.Normalize instance that
+    implement a discrete colormap with an arbitrary midpoint.
+
+    vmin; real: the minimum value in the colormap
+    vmax; real: the maximum value in the colormap
+    bands_above_mdpt; integer: the number of color bands above the midpoint
+    bands_below_mdpt; integer: the number of color bands below the midpoint
+    this_cmap: matplotlib.colors.Colormap; the colormap on which to
+        base the output colormap.  Default is
+        ['PuOr'](http://matplotlib.org/examples/color/colormaps_reference.html).
+        This function makes the most sense if a diverging colormap is
+        chosen.
+
+    adapted by Timothy W. Hilton from code posted by Joe Kington to
+    http://stackoverflow.com/questions/20144529/shifted-colorbar-matplotlib
+    accessed 9 Nov 2015
+
+    ==================================================
+    example:
+
+    plt.close('all')
+    data = np.random.randint(-120, 20, [124, 124])
+    fix, ax = plt.subplots(1, 2)
+    mycmap, mynorm = get_discrete_midpt_cmap_norm(vmin=-120,
+                                                  vmax=20,
+                                                  midpoint=0.0,
+                                                  bands_above_mdpt=6,
+                                                  bands_below_mdpt=20)
+    cm = ax[0].pcolormesh(data, norm=mynorm, cmap=mycmap)
+    plt.colorbar(cm, cax=ax[1])
+    plt.show()
+
+
+    """
+    x = np.concatenate([np.linspace(start=vmin,
+                                    stop=midpoint,
+                                    num=bands_below_mdpt),
+                        np.linspace(start=midpoint,
+                                    stop=vmax,
+                                    num=bands_above_mdpt)[1:]])
+    y = np.concatenate([np.linspace(start=0.0,
+                                    stop=0.5,
+                                    num=bands_below_mdpt),
+                        np.linspace(start=0.5,
+                                    stop=1.0,
+                                    num=bands_above_mdpt)[1:]])
+
+    mycmap, mynorm = from_levels_and_colors(x, this_cmap(y[1:]))
+    return(mycmap, mynorm)
 
 
 class MidpointNormalize(Normalize):
