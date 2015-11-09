@@ -3,11 +3,17 @@ import numpy as np
 from matplotlib.colors import from_levels_and_colors
 
 
-def get_cmap_norm(vmin, vmax, midpoint, this_cmap=plt.get_cmap('PuOr')):
+def get_cmap_norm(vmin, vmax, midpoint,
+                  bands_above_mdpt=5,
+                  bands_below_mdpt=5,
+                  this_cmap=plt.get_cmap('PuOr')):
+    """
 
-    bands_above_mdpt = 3
-    bands_below_mdpt = 9
 
+    adapted by Timothy W. Hilton from code posted by Joe Kington to
+    http://stackoverflow.com/questions/20144529/shifted-colorbar-matplotlib
+    accessed 19 January 2015
+    """
     x = np.concatenate([np.linspace(start=vmin,
                                     stop=midpoint,
                                     num=bands_below_mdpt),
@@ -29,7 +35,9 @@ plt.close('all')
 data = np.random.randint(-120, 20, [124, 124])
 #[data, data2] = np.meshgrid(np.linspace(-100, 20), np.linspace(-100, 20))
 fix, ax = plt.subplots(1, 2)
-mycmap, mynorm = get_cmap_norm(vmin=-120, vmax=20, midpoint=0.0)
+mycmap, mynorm = get_cmap_norm(vmin=-120, vmax=20, midpoint=0.0,
+                               bands_above_mdpt=6,
+                               bands_below_mdpt=20)
 cm = ax[0].pcolormesh(data, norm=mynorm, cmap=mycmap)
 plt.colorbar(cm, cax=ax[1])
 plt.show()
