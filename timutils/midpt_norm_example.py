@@ -1,43 +1,36 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.colors import from_levels_and_colors
+from timutils import midpt_norm
 
 
-def get_cmap_norm(vmin, vmax, midpoint,
-                  bands_above_mdpt=5,
-                  bands_below_mdpt=5,
-                  this_cmap=plt.get_cmap('PuOr')):
+def colorbar_from_cmap_norm(cmap, norm, cax, format, vals):
     """
+    create a colorbar in a specified axis from a colormap instance, a
+    norm instance, and an array of values.
 
-
-    adapted by Timothy W. Hilton from code posted by Joe Kington to
-    http://stackoverflow.com/questions/20144529/shifted-colorbar-matplotlib
-    accessed 19 January 2015
+    This is a workaround for a problem I'm having where calling
+    plt.colorbar on different matplotlib.contour.QuadContourSet
+    created from the same cmap and norm produces different colorbars,
+    all of which are messed up in one way or another.  This function
+    creates a dummy mappable and creates the colorbar from it.
     """
-    x = np.concatenate([np.linspace(start=vmin,
-                                    stop=midpoint,
-                                    num=bands_below_mdpt),
-                        np.linspace(start=midpoint,
-                                    stop=vmax,
-                                    num=bands_above_mdpt)[1:]])
-    y = np.concatenate([np.linspace(start=0.0,
-                                    stop=0.5,
-                                    num=bands_below_mdpt),
-                        np.linspace(start=0.5,
-                                    stop=1.0,
-                                    num=bands_above_mdpt)[1:]])
-
-    mycmap, mynorm = from_levels_and_colors(x, this_cmap(y[1:]))
-    return(mycmap, mynorm)
+    dummy_scm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
+    dummy_scm.set_array(vals)
+    cb = plt.colorbar(dummy_scm, cax=cax, format=format, extend='both')
+    return(cb)
 
 
 plt.close('all')
-data = np.random.randint(-120, 20, [124, 124])
+data = np.random.randint(-140, 30, [124, 124])
 #[data, data2] = np.meshgrid(np.linspace(-100, 20), np.linspace(-100, 20))
 fix, ax = plt.subplots(1, 2)
-mycmap, mynorm = get_cmap_norm(vmin=-120, vmax=20, midpoint=0.0,
-                               bands_above_mdpt=6,
-                               bands_below_mdpt=20)
+mycmap, mynorm = midpt_norm.get_discrete_midpt_cmap_norm(
+    vmin=-120, vmax=20,
+    midpoint=0.0,
+    bands_above_mdpt=3,
+    bands_below_mdpt=6,
+    extend='both')
 cm = ax[0].pcolormesh(data, norm=mynorm, cmap=mycmap)
-plt.colorbar(cm, cax=ax[1])
+cb = colorbar_from_cmap_norm(mycmap, mynorm, ax[1], '%d', data)
+# plt.colorbar(cm, cax=ax[1], norm=mynorm, extend='both')
 plt.show()

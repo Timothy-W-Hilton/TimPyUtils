@@ -7,20 +7,27 @@ from matplotlib.colors import Normalize, from_levels_and_colors
 def get_discrete_midpt_cmap_norm(vmin, vmax, midpoint,
                                  bands_above_mdpt=5,
                                  bands_below_mdpt=5,
-                                 this_cmap=plt.get_cmap('PuOr')):
+                                 this_cmap=plt.get_cmap('PuOr'),
+                                 extend='both'):
     """
     returns a colormap and a matplotlib.colors.Normalize instance that
     implement a discrete colormap with an arbitrary midpoint.
 
-    vmin; real: the minimum value in the colormap
-    vmax; real: the maximum value in the colormap
-    bands_above_mdpt; integer: the number of color bands above the midpoint
-    bands_below_mdpt; integer: the number of color bands below the midpoint
-    this_cmap: matplotlib.colors.Colormap; the colormap on which to
+    :param vmin: real; the minimum value in the colormap
+    :param vmax: real; the maximum value in the colormap
+    :param bands_above_mdpt:
+        integer; the number of color bands above the midpoint
+    :param bands_below_mdpt:
+        integer; the number of color bands below the midpoint
+    :param this_cmap: matplotlib.colors.Colormap; the colormap on which to
         base the output colormap.  Default is
         ['PuOr'](http://matplotlib.org/examples/color/colormaps_reference.html).
         This function makes the most sense if a diverging colormap is
         chosen.
+    :param extend: "max", "min", {"both"}, "neither"; whether the colorbar
+        should reserve a color for values above vmax or below vmin.
+        If "neither" is selected such values are masked out and left
+        blank.
 
     adapted by Timothy W. Hilton from code posted by Joe Kington to
     http://stackoverflow.com/questions/20144529/shifted-colorbar-matplotlib
@@ -41,7 +48,6 @@ def get_discrete_midpt_cmap_norm(vmin, vmax, midpoint,
     plt.colorbar(cm, cax=ax[1])
     plt.show()
 
-
     """
     x = np.concatenate([np.linspace(start=vmin,
                                     stop=midpoint,
@@ -54,9 +60,10 @@ def get_discrete_midpt_cmap_norm(vmin, vmax, midpoint,
                                     num=bands_below_mdpt),
                         np.linspace(start=0.5,
                                     stop=1.0,
-                                    num=bands_above_mdpt)[1:]])
+                                    num=bands_above_mdpt + 1)[1:]])
 
-    mycmap, mynorm = from_levels_and_colors(x, this_cmap(y[1:]))
+    mycmap, mynorm = from_levels_and_colors(x, this_cmap(y),
+                                            extend=extend)
     return(mycmap, mynorm)
 
 
