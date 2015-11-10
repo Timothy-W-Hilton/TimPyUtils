@@ -51,16 +51,16 @@ def get_discrete_midpt_cmap_norm(vmin, vmax, midpoint,
     """
     x = np.concatenate([np.linspace(start=vmin,
                                     stop=midpoint,
-                                    num=bands_below_mdpt),
+                                    num=bands_below_mdpt)[:-1],
                         np.linspace(start=midpoint,
                                     stop=vmax,
-                                    num=bands_above_mdpt)[1:]])
+                                    num=bands_above_mdpt)])
     y = np.concatenate([np.linspace(start=0.0,
                                     stop=0.5,
-                                    num=bands_below_mdpt),
+                                    num=bands_below_mdpt+1)[:-1],
                         np.linspace(start=0.5,
                                     stop=1.0,
-                                    num=bands_above_mdpt + 1)[1:]])
+                                    num=bands_above_mdpt)])
 
     mycmap, mynorm = from_levels_and_colors(x, this_cmap(y),
                                             extend=extend)
