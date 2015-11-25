@@ -13,40 +13,44 @@ def get_discrete_midpt_cmap_norm(vmin, vmax, midpoint,
     returns a colormap and a matplotlib.colors.Normalize instance that
     implement a discrete colormap with an arbitrary midpoint.
 
-    :param vmin: real; the minimum value in the colormap
-    :param vmax: real; the maximum value in the colormap
-    :param bands_above_mdpt:
-        integer; the number of color bands above the midpoint
-    :param bands_below_mdpt:
-        integer; the number of color bands below the midpoint
-    :param this_cmap: matplotlib.colors.Colormap; the colormap on which to
-        base the output colormap.  Default is
-        ['PuOr'](http://matplotlib.org/examples/color/colormaps_reference.html).
-        This function makes the most sense if a diverging colormap is
-        chosen.
-    :param extend: "max", "min", {"both"}, "neither"; whether the colorbar
-        should reserve a color for values above vmax or below vmin.
-        If "neither" is selected such values are masked out and left
-        blank.
+    ARGS:
+        vmin (real): the minimum value in the colormap
+        vmax (real): the maximum value in the colormap
+        bands_above_mdpt (integer): the number of color bands above the
+            midpoint
+        bands_below_mdpt (integer): the number of color bands below the
+            midpoint
+        this_cmap (:class:`matplotlib.colors.Colormap` instance):
+            colormap on which to base the output colormap.  Default is
+            `PuOr
+            <http://matplotlib.org/examples/color/colormaps_reference.html>`_.
+            get_discrete_midpt_cmap_norm is intended to be used with a
+            `diverging colormap
+            <http://matplotlib.org/examples/color/colormaps_reference.html>`_.
+        extend (string): ["max", "min", {"both"}, "neither"]; whether the
+            colorbar should reserve a color for values above vmax or below
+            vmin.  If "neither" is selected such values are masked out and
+            left blank.
 
     adapted by Timothy W. Hilton from code posted by Joe Kington to
     http://stackoverflow.com/questions/20144529/shifted-colorbar-matplotlib
     accessed 9 Nov 2015
 
-    ==================================================
-    example:
-
-    plt.close('all')
-    data = np.random.randint(-120, 20, [124, 124])
-    fix, ax = plt.subplots(1, 2)
-    mycmap, mynorm = get_discrete_midpt_cmap_norm(vmin=-120,
-                                                  vmax=20,
-                                                  midpoint=0.0,
-                                                  bands_above_mdpt=6,
-                                                  bands_below_mdpt=20)
-    cm = ax[0].pcolormesh(data, norm=mynorm, cmap=mycmap)
-    plt.colorbar(cm, cax=ax[1])
-    plt.show()
+    EXAMPLE:
+        >>> import matplotlib.pyplot as plt
+        >>> import numpy as np
+        >>> from timutils.midpt_norm import get_discrete_midpt_cmap_norm
+        >>> plt.close('all')
+        >>> data = np.random.randint(-120, 20, [124, 124])
+        >>> fix, ax = plt.subplots(1, 2)
+        >>> mycmap, mynorm = get_discrete_midpt_cmap_norm(vmin=-120,
+                                                      vmax=20,
+                                                      midpoint=0.0,
+                                                      bands_above_mdpt=6,
+                                                      bands_below_mdpt=20)
+        >>> cm = ax[0].pcolormesh(data, norm=mynorm, cmap=mycmap)
+        >>> plt.colorbar(cm, cax=ax[1])
+        >>> plt.show()
 
     """
     x = np.concatenate([np.linspace(start=vmin,
@@ -69,20 +73,43 @@ def get_discrete_midpt_cmap_norm(vmin, vmax, midpoint,
 
 class MidpointNormalize(Normalize):
     """
-    adapted by Timothy W. Hilton from code posted by Joe Kington to
-    http://stackoverflow.com/questions/20144529/shifted-colorbar-matplotlib
-    accessed 19 January 2015
+    A subclass of matplotlib.colors.Normalize.
+
+    Normalizes data into the ``[0.0, 1.0]`` interval.
     """
 
     def __init__(self, vmin=None, vmax=None, midpoint=None,
                  clip=False, nlevs=9):
+        """returns a colormap and a matplotlib.colors.Normalize
+        instance that implement a *continuous* colormap with an
+        arbitrary midpoint.
+
+        ARGS:
+            vmin (real): the minimum value in the colormap
+            vmax (real): the maximum value in the colormap
+            midpoint (real): the midpoint to center on
+            clip (boolean):
+            nlevs (integer): number of levels to divide the colormap
+                into.  Not currently functional.
+
+        adapted by Timothy W. Hilton from `code posted by Joe Kington
+        <http://stackoverflow.com/questions/20144529/shifted-colorbar-matplotlib>`_
+        accessed 19 January 2015
+        """
+
         self.midpoint = midpoint
         self.nlevs = nlevs
         Normalize.__init__(self, vmin, vmax, clip)
 
     def __call__(self, value, clip=None):
-        # I'm ignoring masked values and all kinds of edge cases to make a
-        # simple example...
+        """Map value to the interval [0, 1]. The clip argument is
+        unused. I'm ignoring masked values and all kinds of edge cases
+        to make a simple example...
+
+        ARGS:
+            value (:class: numpy.array -like): The data values to be
+                normalized.
+        """
 
         x = np.concatenate([np.linspace(start=self.vmin,
                                         stop=self.midpoint,
@@ -113,27 +140,23 @@ class PiecewiseLinearNorm(Normalize):
         Useful when mapping data unequally centered around a conceptual
         center, e.g., data that range from -2 to 4, with 0 as the midpoint.
 
-        Parameters
-        ----------
-        vmin : float, optional
+        :param vmin : float, optional
             The data value that defines ``0.0`` in the normalized data.
             Defaults to the min value of the dataset.
 
-        vcenter : float, optional
+        :param vcenter : float, optional
             The data value that defines ``0.5`` in the normalized data.
             Defaults to halfway between *vmin* and *vmax*.
 
-        vmax : float, optional
+        :param vmax : float, optional
             The data value that defines ``1.0`` in the normalized data.
             Defaults to the the max value of the dataset.
 
-        Examples
-        --------
-        >>> import matplotlib.colors as mcolors
-        >>> offset = mcolors.PiecewiseLinearNorm(vmin=-2., vcenter=0., vmax=4.)
-        >>> data = [-2., -1., 0., 1., 2., 3., 4.]
-        >>> offset(data)
-        array([0., 0.25, 0.5, 0.625, 0.75, 0.875, 1.0])
+        example::
+            import matplotlib.colors as mcolors
+            offset = mcolors.PiecewiseLinearNorm(vmin=-2., vcenter=0., vmax=4.)
+            data = [-2., -1., 0., 1., 2., 3., 4.]
+            offset(data)
 
         """
 
