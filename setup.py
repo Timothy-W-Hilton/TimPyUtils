@@ -9,7 +9,7 @@ config = {
     'url': 'thilton@ucmerced.edu',
     'download_url': 'thilton@ucmerced.edu',
     'author_email': 'thilton@ucmerced.edu',
-    'version': '0.1',
+    'version': '1.0',
     'install_requires': ['nose', 'numpy', 'matplotlib'],
     'packages': ['timutils'],
     'scripts': [],
