@@ -17,9 +17,9 @@ def setup_colormap(vmin, vmax, nlevs=5,
         nlevs (integer): number of levels for the colormap (default is 5)
         cmap (:class:`matplotlib.colors.Colormap` instance): colormap
             to use for the N-level colormap
-        extend (string): ({'both'} | 'min' | 'max' | 'neither'}) should the
-             top or bottom of the colormap use an arrow to indicate "and
-             larger" or "and smaller"
+        extend (string): ({'both'} | 'min' | 'max' | 'neither'})
+            should the top or bottom of the colormap use an arrow to
+            indicate "and larger" or "and smaller"
 
     RETURNS:
         tuple (cmap, norm) containing a
@@ -31,15 +31,14 @@ def setup_colormap(vmin, vmax, nlevs=5,
         >>> import numpy as np
         >>> from timutils.colormap_nlevs import setup_colormap
         >>> data = np.random.rand(100, 100)  * 1000
-        >>> mycmap, mynorm = setup_colormap(
-            vmin=200.0, vmax=800.0, extend='max')
+        >>> mycmap, mynorm = setup_colormap(vmin=200.0, vmax=800.0,
+            extend='max')
         >>> fig, ax = plt.subplots()
         >>> cm = ax.pcolormesh(data, cmap=mycmap, norm=mynorm)
         >>> plt.colorbar(cm)
-        >>> plt.title(('setup_colormap example\n'
-                   'data values 0 to 1000; nlevs=5, vmin=200, vmax=800'))
+        >>> plt.title(('setup_colormap example\n' 'data values 0 to
+            1000; nlevs=5, vmin=200, vmax=800'))
         >>> plt.show()
-
     """
     print 'setting up colormaps'
     # Pick some of the nicer colors from the palette...

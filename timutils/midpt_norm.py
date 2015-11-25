@@ -128,7 +128,7 @@ class MidpointNormalize(Normalize):
         return np.ma.masked_array(np.interp(value, x, y))
 
 
-class PiecewiseLinearNorm(Normalize):
+class __PiecewiseLinearNorm(Normalize):
     """
     A subclass of matplotlib.colors.Normalize.
 
