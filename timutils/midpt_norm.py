@@ -2,7 +2,7 @@ import numpy as np
 import numpy.ma as ma
 import matplotlib.pyplot as plt
 from matplotlib.colors import Normalize, from_levels_and_colors
-
+import warnings
 
 def get_discrete_midpt_cmap_norm(vmin, vmax, midpoint,
                                  bands_above_mdpt=5,
@@ -71,7 +71,7 @@ def get_discrete_midpt_cmap_norm(vmin, vmax, midpoint,
     return(mycmap, mynorm)
 
 
-class MidpointNormalize(Normalize):
+class _MidpointNormalize(Normalize):
     """
     A subclass of matplotlib.colors.Normalize.
 
@@ -80,7 +80,12 @@ class MidpointNormalize(Normalize):
 
     def __init__(self, vmin=None, vmax=None, midpoint=None,
                  clip=False, nlevs=9):
-        """returns a colormap and a matplotlib.colors.Normalize
+        """.. warning::
+             MidpointNormalize is deprecated and will be removed in
+             future versions.  Please use
+             :class:`timutils.get_discrete_midpt_cmap_norm` instead
+
+        returns a colormap and a matplotlib.colors.Normalize
         instance that implement a *continuous* colormap with an
         arbitrary midpoint.
 
@@ -92,17 +97,37 @@ class MidpointNormalize(Normalize):
             nlevs (integer): number of levels to divide the colormap
                 into.  Not currently functional.
 
+        EXAMPLE:
+            >>> import matplotlib.pyplot as plt
+            >>> import numpy as np
+            >>> from timutils.midpt_norm import MidpointNormalize
+            >>> plt.close('all')
+            >>> data = np.random.randint(-120, 20, [124, 124])
+            >>> fix, ax = plt.subplots(1, 2)
+            >>> mycmap = plt.get_cmap('Blues')
+            >>> mynorm = MidpointNormalize(vmin=-120, vmax=20, midpoint=0.0)
+            >>> cm = ax[0].pcolormesh(data, norm=mynorm, cmap=mycmap)
+            >>> plt.colorbar(cm, cax=ax[1], norm=mynorm, cmap=mycmap)
+            >>> plt.show()
+
         adapted by Timothy W. Hilton from `code posted by Joe Kington
         <http://stackoverflow.com/questions/20144529/shifted-colorbar-matplotlib>`_
         accessed 19 January 2015
         """
-
+        warnings.warn(('MidpointNormalize is (1) deprecated and (2)'
+                       'buggy and will be' 'removed in future versions. '
+                       'Please use get_discrete_midpt_cmap_norm instead'))
         self.midpoint = midpoint
         self.nlevs = nlevs
         Normalize.__init__(self, vmin, vmax, clip)
 
     def __call__(self, value, clip=None):
-        """Map value to the interval [0, 1]. The clip argument is
+        """.. warning::
+             MidpointNormalize is deprecated and will be removed in
+             future versions.  Please use
+             :class:`timutils.get_discrete_midpt_cmap_norm` instead
+
+        Map value to the interval [0, 1]. The clip argument is
         unused. I'm ignoring masked values and all kinds of edge cases
         to make a simple example...
 
