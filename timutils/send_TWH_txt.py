@@ -11,6 +11,18 @@ import smtplib
 import getpass
 
 def get_outgoing_mail_password():
+    """
+    prompts user for the password for the email account to be used to
+    the send the text message.
+
+    .. note::
+        Uses
+        `getpass <https://docs.python.org/2/library/getpass.html>`_, so
+        is subject to the same security considerations.
+
+    YIELDS:
+        string containing the password.
+    """
     pwd = getpass.getpass(prompt='Gmail password: ')
     if len(pwd) == 0:
         pwd = None
@@ -20,7 +32,31 @@ def send_vtext_gmail(gmail_passwd,
                      gmail_uname='timothy.w.hilton@gmail.com',
                      dest_phone_num='4153147478',
                      msg_txt='testing 123'):
+    """
+    Send a text message to a specified phone number from a specified
+    gmail account.
 
+    ARGS:
+       gmail_passwd (string): the password for the gmail account to be
+           used to send the text message
+       gmail_uname (string): the username for the gmail account to be
+           used to send the text message
+       dest_phone_num (string): the ten-digit phone number to send the
+           text message to.
+       msg_txt (string): the content of the text message to send.
+
+    EXAMPLE:
+        >>> passwd = get_outgoing_mail_password()
+        >>> if passwd is not None:
+            send_vtext_gmail(passwd,
+                             msg_txt='here is the message')
+
+    .. note::
+       uses the
+       `vtext.com <http://www.verizonwireless.com/support/vtext-website-faqs/>`_
+       feature offered by Verizon Wireless. Behavior for non-Verizon
+       dest_phone_num is untested.
+    """
     vtext_addr = "{}@vtext.com".format(dest_phone_num)
 
     msg = """From: %s
@@ -39,9 +75,10 @@ def send_vtext_outlook(ucmerced_uname,
                        dest_phone_num,
                        msg_txt):
     """
-    25 Feb 2014: couldn't get sending mail through UC Merced's
-    outlook.com SMTP server to work.  Probably something related to
-    the formatting of the outlook.com username? -TWH
+    .. warning::
+        25 Feb 2014: couldn't get sending mail through UC Merced's
+        outlook.com SMTP server to work.  Probably something related to
+        the formatting of the outlook.com username? -TWH
     """
     vtext_addr = "{}@vtext.com".format(dest_phone_num)
     smtp_uname = "{}@ucmerced.edu".format(ucmerced_uname)

@@ -7,7 +7,10 @@ def delete_if_exists(fname):
     """remove a file if it exists, with a message to stdout
 
     ARGS:
-        fname (string): full path to the file to be removed
+        fname (string): full path of the file to be removed
+
+    EXAMPLE:
+        >>> delete_if_exists('/path/to/file/file_name.txt')
     """
     if os.path.exists(fname):
         sys.stdout.write('removed {}\n'.format(fname))
