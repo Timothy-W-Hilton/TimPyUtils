@@ -1,10 +1,16 @@
+""""create a colorbar in a specified axis from a colormap instance,
+    a norm instance, and an array of values.
+"""
+
+
 import matplotlib.pylab as plt
 
 
 def colorbar_from_cmap_norm(cmap, norm, cax, format, vals):
-    """
-    create a colorbar in a specified axis from a colormap instance, a
-    norm instance, and an array of values.
+    """Create colorbar using provided axis, colormap, norm, values.
+
+    Create a colorbar in a specified axis from a colormap instance,
+    a norm instance, and an array of values.
 
     This is a workaround for a problem I'm having where calling
     plt.colorbar on different matplotlib.contour.QuadContourSet

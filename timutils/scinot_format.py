@@ -2,10 +2,9 @@ import numpy as np
 
 
 def scinot_format(x):
-    """format a numeric parameter x into scientific notation for use
-    in plot labels.
+    """format a number into scientific notation for use in plot labels.
 
-    Formats the parameter using :math:`123 \\times 10^{{-456}}`
+    Formats the parameter x using :math:`123 \\times 10^{{-456}}`
     notation, not :math:`123\\mathrm{e}-456` notation.
 
     ARGS:

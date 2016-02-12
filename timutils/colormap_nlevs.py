@@ -1,3 +1,6 @@
+"""create colormaps with user-specified number of intervals.
+"""
+
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.colors import from_levels_and_colors
@@ -6,10 +9,11 @@ from matplotlib.colors import from_levels_and_colors
 def setup_colormap(vmin, vmax, nlevs=5,
                    cmap=plt.get_cmap('Greens'),
                    extend='both'):
-    """setup a colormap based on a existing colormap with a specified
-    number N of levels.  Returns the N-level colormap and a normalizer
-    to plot arbitrary data using the colormap.  The normalizing places
-    the N levels at constant intervals between the vmin and vmax.
+    """create a discrete colormap from a continuous colormap
+
+    Returns the N-level colormap and a normalizer to plot arbitrary
+    data using the colormap.  The normalizing places the N levels at
+    constant intervals between the vmin and vmax.
 
     ARGS:
         vmin (float): value to map to the lowest color level
@@ -39,6 +43,7 @@ def setup_colormap(vmin, vmax, nlevs=5,
         >>> plt.title(('setup_colormap example\n' 'data values 0 to
             1000; nlevs=5, vmin=200, vmax=800'))
         >>> plt.show()
+
     """
     print 'setting up colormaps'
     # Pick some of the nicer colors from the palette...
@@ -57,11 +62,13 @@ def setup_colormap(vmin, vmax, nlevs=5,
 def setup_colormap_with_zeroval(vmin, vmax, nlevs=5,
                                 cmap=plt.get_cmap('Greens'),
                                 extend='both'):
-    """
+    """create a discrete colormap with reserved level for small values
+
     setup a colormap based on a existing colormap with a specified
     number N of levels reserving the lowest colormap level for
-    extremely small values (currently defined as [0.0, 1e-8] .
+    extremely small values.
 
+    Extremely small are currently defined as [0.0, 1e-8].
 
     Returns the N-level colormap and a normalizer to plot arbitrary
     data using the colormap.  The normalizing places the N levels at

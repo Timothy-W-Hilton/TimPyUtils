@@ -1,3 +1,6 @@
+"""wrapper functions for input/output tasks
+"""
+
 import sys
 import os
 import os.path

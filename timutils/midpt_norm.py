@@ -1,3 +1,8 @@
+"""Implement a colormap with user-specified midpoint and number of
+intervals.
+
+"""
+
 import numpy as np
 import numpy.ma as ma
 import matplotlib.pyplot as plt
@@ -9,9 +14,11 @@ def get_discrete_midpt_cmap_norm(vmin, vmax, midpoint,
                                  bands_below_mdpt=5,
                                  this_cmap=plt.get_cmap('PuOr'),
                                  extend='both'):
-    """
-    returns a colormap and a matplotlib.colors.Normalize instance that
-    implement a discrete colormap with an arbitrary midpoint.
+    """Create a colormap with user-specified midpoint and number of
+    intervals.
+
+    Provides a colormap and a matplotlib.colors.Normalize instance
+    that implement a discrete colormap with an arbitrary midpoint.
 
     ARGS:
         vmin (real): the minimum value in the colormap

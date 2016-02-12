@@ -13,8 +13,16 @@ Contents:
 .. toctree::
    :maxdepth: 4
 
-   timutils
+.. autosummary::
+   :toctree: _autosummary
 
+   timutils.colorbar_from_cmap_norm.colorbar_from_cmap_norm
+   timutils.colormap_nlevs.setup_colormap
+   timutils.colormap_nlevs.setup_colormap_with_zeroval
+   timutils.io.delete_if_exists
+   timutils.midpt_norm.get_discrete_midpt_cmap_norm
+   timutils.mpl_fig_joiner
+   timutils.scinot_format.scinot_format
 
 Indices and tables
 ==================
