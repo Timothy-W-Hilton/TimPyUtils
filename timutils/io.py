@@ -20,4 +20,4 @@ def delete_if_exists(fname):
         sys.stdout.flush()
         os.remove(fname)
         if os.path.exists(fname):
-            raise OSError('file still exists')
+            raise OSError('delete_if_exists failed: file still exists')
