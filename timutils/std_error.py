@@ -85,8 +85,8 @@ def calc_std_err(arr, dim=0, n=None):
         n = arr.shape[dim]
     x_bar = np.mean(arr, axis=dim).squeeze()
     # calculate standard error according to Efron & Tibshirani (1991) eq 1.
-    se_x = np.sqrt(np.sum(arr - x_bar, dim) / (n * (n - 1)))
-    return se_x
+    se = np.sqrt(np.sum(np.square(arr - x_bar), dim) / (n * (n - 1)))
+    return se
 
 
 def calc_neff(arr, dim=0):
