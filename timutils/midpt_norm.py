@@ -73,6 +73,8 @@ def get_discrete_midpt_cmap_norm(vmin, vmax, midpoint,
                                     stop=1.0,
                                     num=bands_above_mdpt)])
 
+    if extend is 'neither':
+        y = y[1:-1]
     mycmap, mynorm = from_levels_and_colors(x, this_cmap(y),
                                             extend=extend)
     return(mycmap, mynorm)
