@@ -75,6 +75,10 @@ def get_discrete_midpt_cmap_norm(vmin, vmax, midpoint,
 
     if extend is 'neither':
         y = y[1:-1]
+    if extend is 'min':
+        y = y[:-1]
+    if extend is 'max':
+        y = y[1:]
     mycmap, mynorm = from_levels_and_colors(x, this_cmap(y),
                                             extend=extend)
     return(mycmap, mynorm)
