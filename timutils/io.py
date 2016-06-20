@@ -39,7 +39,7 @@ def get_temp_filename(dir="SCRATCH", prefix='tmpfile_', suffix='.png'):
         a string containing the full path to a temporary file
 
     EXAMPLE:
-        tmp_name = get_temp_filename(dir='/tmp', suffix='.txt')
+        >>> tmp_name = get_temp_filename(dir='/tmp', suffix='.txt')
     """
 
     if dir is "SCRATCH":
