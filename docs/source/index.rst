@@ -10,8 +10,6 @@ This is a collection of Python tools that I find useful.  Some I have
 written myself and some (as noted in the documentation) I have
 scrounged from the web.
 
-Contents:
-
 .. toctree::
    :maxdepth: 2
 
