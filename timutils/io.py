@@ -24,15 +24,15 @@ def delete_if_exists(fname):
             raise OSError('delete_if_exists failed: file still exists')
 
 
-def get_temp_filename(dir="SCRATCH", prefix='tmpfile_', suffix='.png'):
+def get_temp_filename(dir="SCRATCH", prefix='tmpfile', suffix='.png'):
     """return a name for a temporary file
 
     ARGS:
         dir (string): full path of directory for the temporary
-            file. Default is $SCRATCH.
+    	    file. Default is $SCRATCH.
         prefix (string): prefix to place before the random string in
-            the filename.  Default is "tmpfile_"
-        prefix (string): suffix to place after the random string in
+            the filename.  Default is "tmpfile"
+        suffix (string): suffix to place after the random string in
             the filename.  Default is ".png"
 
     RETURNS:

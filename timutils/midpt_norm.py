@@ -23,21 +23,10 @@ def get_discrete_midpt_cmap_norm(vmin, vmax, midpoint,
     ARGS:
         vmin (real): the minimum value in the colormap
         vmax (real): the maximum value in the colormap
-        bands_above_mdpt (integer): the number of color bands above the
-            midpoint
-        bands_below_mdpt (integer): the number of color bands below the
-            midpoint
-        this_cmap (:class:`matplotlib.colors.Colormap` instance):
-            colormap on which to base the output colormap.  Default is
-            `PuOr
-            <http://matplotlib.org/examples/color/colormaps_reference.html>`_.
-            get_discrete_midpt_cmap_norm is intended to be used with a
-            `diverging colormap
-            <http://matplotlib.org/examples/color/colormaps_reference.html>`_.
-        extend (string): ["max", "min", {"both"}, "neither"]; whether the
-            colorbar should reserve a color for values above vmax or below
-            vmin.  If "neither" is selected such values are masked out and
-            left blank.
+        bands_above_mdpt (integer): the number of color bands above the midpoint
+        bands_below_mdpt (integer): the number of color bands below the midpoint
+        this_cmap (:class:`matplotlib.colors.Colormap` instance): colormap on which to base the output colormap.  Default is `PuOr <http://matplotlib.org/examples/color/colormaps_reference.html>`_. get_discrete_midpt_cmap_norm is intended to be used with a `diverging colormap <http://matplotlib.org/examples/color/colormaps_reference.html>`_.
+        extend (string): ["max", "min", {"both"}, "neither"]; whether the colorbar should reserve a color for values above vmax or below vmin.  If "neither" is selected such values are masked out and left blank.
 
     adapted by Timothy W. Hilton from code posted by Joe Kington to
     http://stackoverflow.com/questions/20144529/shifted-colorbar-matplotlib

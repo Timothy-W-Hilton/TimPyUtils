@@ -38,16 +38,12 @@ class MeanStdError(object):
         neff.  neff is calculated according to Wilks (1995).
 
         ARGS:
-        dim (int): the dimension of self.arr along which the mean, standard
-            error should be calculated
-        adjust_n (boolean): if True, use the "effective sample size" of
-            Wilks (1995) to account for autocorrelation in the data.
+        dim (int): the dimension of self.arr along which the mean, standard error should be calculated
+        adjust_n (boolean): if True, use the "effective sample size" of Wilks (1995) to account for autocorrelation in the data.
 
         REFERENCES:
-        Efron, B. & Tibshirani, R., 1991.  Statistical Data Analysis
-           in the Computer Age.  Science, 253, 5018, p 390- 395.
-        Wilks, D., 1995 Statistical Methods in the Atmospheric
-           Sciences: An Introduction.  Academic Press, New York
+        Efron, B. & Tibshirani, R., 1991.  Statistical Data Analysis in the Computer Age.  Science, 253, 5018, p 390- 395.
+        Wilks, D., 1995 Statistical Methods in the Atmospheric Sciences: An Introduction.  Academic Press, New York
         """
 
         self.neff = calc_neff(self.arr, dim=dim)
@@ -64,22 +60,14 @@ def calc_std_err(arr, dim=0, n=None):
 
     ARGS:
     arr (array-like): numpy array of numeric values
-    dim (int): the dimension of arr along which the effective sample
-       size should be calculated.  Default is 0.
-    n (array-like): value of n to be used for each element of arr
-       along axis dim. Default is the number of elements along axis
-       dim of arr (i.e. arr.shape[dim]).  That is, the default is to
-       treat each element of arr as an independent data point.  A
-       different value of n may be useful to, for example, account for
-       autocorrelation in arr (see function calc_autocorr).
+    dim (int): the dimension of arr along which the effective sample size should be calculated.  Default is 0.
+    n (array-like): value of n to be used for each element of arr along axis dim. Default is the number of elements along axis dim of arr (i.e. arr.shape[dim]).  That is, the default is to treat each element of arr as an independent data point.  A different value of n may be useful to, for example, account for autocorrelation in arr (see function calc_autocorr).
 
     RETURNS:
-    A numpy array containing standard error of the mean along axis dim
-       of arr.
+    A numpy array containing standard error of the mean along axis dim of arr.
 
     REFERENCES
-    Efron, B. & Tibshirani, R., 1991.  Statistical Data Analysis
-       in the Computer Age.  Science, 253, 5018, p 390- 395.
+    Efron, B. & Tibshirani, R., 1991.  Statistical Data Analysis in the Computer Age.  Science, 253, 5018, p 390- 395.
     """
     if n is None:
         n = arr.shape[dim]
@@ -97,15 +85,13 @@ def calc_neff(arr, dim=0):
 
     ARGS:
     arr (array-like): numpy array of numeric values
-    dim (int): the dimension of arr along which the effective sample
-       size should be calculated.  Default is 0.
+    dim (int): the dimension of arr along which the effective sample size should be calculated.  Default is 0.
 
     RETURNS:
     effective sample size accounting for lag-1 autocorrelation
 
     REFERENCES:
-    Wilks, D., 1995 Statistical Methods in the Atmospheric
-       Sciences: An Introduction.  Academic Press, New York
+    Wilks, D., 1995 Statistical Methods in the Atmospheric Sciences: An Introduction.  Academic Press, New York
     """
     rho = calc_autocorr(arr, dim, lag=1)
     n = arr.shape[dim]
@@ -118,8 +104,7 @@ def calc_autocorr(arr, dim=0, lag=1):
 
     ARGS:
     arr (array-like): numpy array of numeric values
-    dim (int): the dimension of arr along which the autocorrelation
-       should be calculated.  Default is 0.
+    dim (int): the dimension of arr along which the autocorrelation should be calculated.  Default is 0.
     lag (int): lag to use for autocorrelation calculation.
 
     RETURNS:
