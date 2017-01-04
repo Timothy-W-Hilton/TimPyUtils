@@ -5,6 +5,7 @@ REFERENCES
 
 Wilks, D. (1995), Statistical Methods in the Atmospheric Sciences: An
 Introduction, Academic Press, New York.
+
 """
 
 import numpy as np
@@ -13,6 +14,7 @@ import pandas as pd
 
 class MeanStdError(object):
     """class to implement standard error calculation on a numpy array
+
     """
 
     def __init__(self, arr):
