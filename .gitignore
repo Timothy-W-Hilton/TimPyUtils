@@ -8,7 +8,6 @@ __pycache__/
 # Distribution / packaging
 api/
 bin/
-build/
 develop-eggs/
 dist/
 eggs/
