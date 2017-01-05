@@ -1,3 +1,2 @@
 theme: jekyll-theme-minimal
-include: build/html/_static
-include: build/html/_sources
+include: ["build/html/_static", "build/html/_sources"]
