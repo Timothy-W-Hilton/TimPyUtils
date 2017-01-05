@@ -2,4 +2,4 @@
 
 Should go to docs/build/html/index.html
 
-[main index.html](build/html/index.html)
+[main index.html](docs/build/html/index.html)
