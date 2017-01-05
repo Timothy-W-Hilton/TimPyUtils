@@ -49,7 +49,8 @@
 <h1>Welcome to TimPyUtils&#8217;s documentation!<a class="headerlink" href="#welcome-to-timpyutils-s-documentation" title="Permalink to this headline">¶</a></h1>
 <p>This is a collection of Python tools that I find useful.  Some I have
 written myself and some (as noted in the documentation) I have
-scrounged from the web.</p>
+scrounged from the web.  The source code is available from
+<a href="#id1"><span class="problematic" id="id2">`https://github.com/Timothy-W-Hilton/TimPyUtils`_</span></a></p>
 <div class="toctree-wrapper compound">
 <ul class="simple">
 </ul>
@@ -256,6 +257,11 @@ present print a message and return False.</p>
 <dt id="timutils.io.get_temp_filename">
 <code class="descclassname">timutils.io.</code><code class="descname">get_temp_filename</code><span class="sig-paren">(</span><em>dir='SCRATCH'</em>, <em>prefix='tmpfile'</em>, <em>suffix='.png'</em><span class="sig-paren">)</span><a class="headerlink" href="#timutils.io.get_temp_filename" title="Permalink to this definition">¶</a></dt>
 <dd><p>return a name for a temporary file</p>
+<p>This is a wrapper for tempfile.NamedTemporaryFile, and provides
+two enhancements: (1) provides a shorthand to place the temporary
+file in the directory pointed to by the operating system
+environment $SCRATCH.  (2) In addition to creating the temporary
+file returns the full path for easy access from a calling routine.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
