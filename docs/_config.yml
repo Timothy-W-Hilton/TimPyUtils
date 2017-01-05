@@ -1,2 +1,2 @@
 theme: jekyll-theme-minimal
-include: ["build/html/_static", "build/html/_sources"]
+include: [".htaccess", "_sources", "_static", "_images"]
