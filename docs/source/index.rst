@@ -8,8 +8,10 @@ Welcome to TimPyUtils's documentation!
 
 This is a collection of Python tools that I find useful.  Some I have
 written myself and some (as noted in the documentation) I have
-scrounged from the web.  The source code is available from
-`https://github.com/Timothy-W-Hilton/TimPyUtils`_
+scrounged from the web.
+
+The source code is available from `GitHub
+<https://github.com/Timothy-W-Hilton/TimPyUtils>`_.
 
 .. toctree::
    :maxdepth: 2
