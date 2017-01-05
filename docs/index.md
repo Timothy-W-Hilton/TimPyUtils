@@ -1,5 +1,6 @@
-###here are the docs!###
+This is a collection of Python tools that I find useful.  Some I have
+written myself and some (as noted in the documentation) I have
+scrounged from the web.  The source code is available
+from [GitHub](https://github.com/Timothy-W-Hilton/TimPyUtils).
 
-Should go to build/html/index.html
-
-[main index.html](build/html/index.html)
+[TimPyUtils full documentation](build/html/index.html)

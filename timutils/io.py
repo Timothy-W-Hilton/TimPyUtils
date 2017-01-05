@@ -27,6 +27,12 @@ def delete_if_exists(fname):
 def get_temp_filename(dir="SCRATCH", prefix='tmpfile', suffix='.png'):
     """return a name for a temporary file
 
+    This is a wrapper for tempfile.NamedTemporaryFile, and provides
+    two enhancements: (1) provides a shorthand to place the temporary
+    file in the directory pointed to by the operating system
+    environment $SCRATCH.  (2) In addition to creating the temporary
+    file returns the full path for easy access from a calling routine.
+
     ARGS:
         dir (string): full path of directory for the temporary
     	    file. Default is $SCRATCH.
@@ -40,6 +46,7 @@ def get_temp_filename(dir="SCRATCH", prefix='tmpfile', suffix='.png'):
 
     EXAMPLE:
         >>> tmp_name = get_temp_filename(dir='/tmp', suffix='.txt')
+
     """
 
     if dir is "SCRATCH":
