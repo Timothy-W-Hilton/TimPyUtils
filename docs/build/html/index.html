@@ -1,0 +1,598 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Welcome to TimPyUtils’s documentation! &mdash; TimPyUtils 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="TimPyUtils 1.0 documentation" href="#" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">TimPyUtils 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-timpyutils-s-documentation">
+<h1>Welcome to TimPyUtils&#8217;s documentation!<a class="headerlink" href="#welcome-to-timpyutils-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>This is a collection of Python tools that I find useful.  Some I have
+written myself and some (as noted in the documentation) I have
+scrounged from the web.</p>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span>Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span>Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span>Search Page</span></a></li>
+</ul>
+</div>
+<div class="section" id="module-documentation">
+<h1>Module documentation<a class="headerlink" href="#module-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-timutils.colorbar_from_cmap_norm">
+<span id="colorbar-from-cmap-norm"></span><h2>colorbar_from_cmap_norm<a class="headerlink" href="#module-timutils.colorbar_from_cmap_norm" title="Permalink to this headline">¶</a></h2>
+<p>&#8220;create a colorbar in a specified axis from a colormap instance,
+a norm instance, and an array of values.</p>
+<dl class="function">
+<dt id="timutils.colorbar_from_cmap_norm.colorbar_from_cmap_norm">
+<code class="descclassname">timutils.colorbar_from_cmap_norm.</code><code class="descname">colorbar_from_cmap_norm</code><span class="sig-paren">(</span><em>cmap</em>, <em>norm</em>, <em>cax</em>, <em>format</em>, <em>vals</em><span class="sig-paren">)</span><a class="headerlink" href="#timutils.colorbar_from_cmap_norm.colorbar_from_cmap_norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create colorbar using provided axis, colormap, norm, values.</p>
+<p>Create a colorbar in a specified axis from a colormap instance,
+a norm instance, and an array of values.</p>
+<p>This is a workaround for a problem I&#8217;m having where calling
+plt.colorbar on different matplotlib.contour.QuadContourSet
+created from the same cmap and norm produces different colorbars,
+all of which are messed up in one way or another.  This function
+creates a dummy mappable and creates the colorbar from it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cmap</strong> (<code class="xref py py-class docutils literal"><span class="pre">matplotlib.colors.Colormap</span></code> instance) &#8211; The colormap
+to use in the colorbar</li>
+<li><strong>norm</strong> (<code class="xref py py-class docutils literal"><span class="pre">matplotlib.colors.Normalize</span></code> instance) &#8211; normalizer
+to use for the colorbar</li>
+<li><strong>cax</strong> (<code class="xref py py-class docutils literal"><span class="pre">matplotlib.axes.Axes</span></code> instance) &#8211; Axes where the
+colorbar is to be drawn</li>
+<li><strong>format</strong> (<em>string</em>) &#8211; [None | format string | Formatter object]
+If None, the <code class="xref py py-class docutils literal"><span class="pre">matplotlib.ticker.ScalarFormatter</span></code> is
+used. If a format string is given, e.g., &#8216;%.3f&#8217;, that is
+used. An alternative <code class="xref py py-class docutils literal"><span class="pre">matplotlib.ticker.Formatter</span></code>
+object may be given instead.</li>
+<li><strong>vals</strong> (<code class="xref py py-class docutils literal"><span class="pre">numpy.array</span></code>-like) &#8211; the data to be described by the
+colorbar</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a
+<code class="xref py py-class docutils literal"><span class="pre">matplotlib.colorbar.Colorbar</span></code> object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">EXAMPLE</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_cmap</span><span class="p">,</span> <span class="n">my_norm</span> <span class="o">=</span> <span class="n">colormap_nlevs</span><span class="o">.</span><span class="n">setup_colormap</span><span class="p">(</span>
+<span class="go">    data.min(), data.max(),</span>
+<span class="go">    nlevs=6,</span>
+<span class="go">    cmap=plt.get_cmap(&#39;Greens&#39;),</span>
+<span class="go">    extend=&#39;max&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">my_cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">my_norm</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cb</span> <span class="o">=</span> <span class="n">colorbar_from_cmap_norm</span><span class="p">(</span><span class="n">my_cmap</span><span class="p">,</span>
+<span class="go">                             my_norm,</span>
+<span class="go">                             ax[1],</span>
+<span class="go">                             &#39;%0.2f&#39;,</span>
+<span class="go">                             data)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-timutils.colormap_nlevs">
+<span id="colormap-nlevs"></span><h2>colormap_nlevs<a class="headerlink" href="#module-timutils.colormap_nlevs" title="Permalink to this headline">¶</a></h2>
+<p>create colormaps with user-specified number of intervals.</p>
+<dl class="function">
+<dt id="timutils.colormap_nlevs.setup_colormap">
+<code class="descclassname">timutils.colormap_nlevs.</code><code class="descname">setup_colormap</code><span class="sig-paren">(</span><em>vmin</em>, <em>vmax</em>, <em>nlevs=5</em>, <em>cmap=&lt;matplotlib.colors.LinearSegmentedColormap object&gt;</em>, <em>extend='both'</em><span class="sig-paren">)</span><a class="headerlink" href="#timutils.colormap_nlevs.setup_colormap" title="Permalink to this definition">¶</a></dt>
+<dd><p>create a discrete colormap from a continuous colormap</p>
+<p>Returns the N-level colormap and a normalizer to plot arbitrary
+data using the colormap.  The normalizing places the N levels at
+constant intervals between the vmin and vmax.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>vmin</strong> (<em>float</em>) &#8211; value to map to the lowest color level</li>
+<li><strong>vmax</strong> (<em>float</em>) &#8211; value to map to the highest color level</li>
+<li><strong>nlevs</strong> (<em>integer</em>) &#8211; number of levels for the colormap (default is 5)</li>
+<li><strong>cmap</strong> (<code class="xref py py-class docutils literal"><span class="pre">matplotlib.colors.Colormap</span></code> instance) &#8211; colormap to use for the N-level colormap</li>
+<li><strong>extend</strong> (<em>string</em>) &#8211; ({&#8216;both&#8217;} | &#8216;min&#8217; | &#8216;max&#8217; | &#8216;neither&#8217;}) should the top or bottom of the colormap use an arrow to indicate &#8220;and larger&#8221; or &#8220;and smaller&#8221;</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">tuple (cmap, norm) containing a
+<code class="xref py py-class docutils literal"><span class="pre">matplotlib.colors.Colormap</span></code> object and a
+<code class="xref py py-class docutils literal"><span class="pre">matplotlib.colors.Normalize</span></code> object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>EXAMPLES:
+&gt;&gt;&gt; import matplotlib.pyplot as plt
+&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; from timutils.colormap_nlevs import setup_colormap
+&gt;&gt;&gt; data = np.random.rand(100, 100)  * 1000
+&gt;&gt;&gt; mycmap, mynorm = setup_colormap(vmin=200.0, vmax=800.0, extend=&#8217;max&#8217;)
+&gt;&gt;&gt; fig, ax = plt.subplots()
+&gt;&gt;&gt; cm = ax.pcolormesh(data, cmap=mycmap, norm=mynorm)
+&gt;&gt;&gt; plt.colorbar(cm)
+&gt;&gt;&gt; plt.title((&#8216;setup_colormap examplen data values 0 to 1000; nlevs=5, vmin=200, vmax=800&#8217;))
+&gt;&gt;&gt; plt.show()</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="timutils.colormap_nlevs.setup_colormap_with_zeroval">
+<code class="descclassname">timutils.colormap_nlevs.</code><code class="descname">setup_colormap_with_zeroval</code><span class="sig-paren">(</span><em>vmin</em>, <em>vmax</em>, <em>nlevs=5</em>, <em>cmap=&lt;matplotlib.colors.LinearSegmentedColormap object&gt;</em>, <em>extend='both'</em><span class="sig-paren">)</span><a class="headerlink" href="#timutils.colormap_nlevs.setup_colormap_with_zeroval" title="Permalink to this definition">¶</a></dt>
+<dd><p>create a discrete colormap with reserved level for small values</p>
+<p>setup a colormap based on a existing colormap with a specified
+number N of levels reserving the lowest colormap level for
+extremely small values.</p>
+<p>Extremely small are currently defined as [0.0, 1e-8].</p>
+<p>Returns the N-level colormap and a normalizer to plot arbitrary
+data using the colormap.  The normalizing places the N levels at
+constant intervals between the vmin and vmax.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>vmin</strong> (<em>float</em>) &#8211; value to map to the lowest color level</li>
+<li><strong>vmax</strong> (<em>float</em>) &#8211; value to map to the highest color level</li>
+<li><strong>nlevs</strong> (<em>integer</em>) &#8211; number of levels for the colormap (default is 5)</li>
+<li><strong>cmap</strong> (<code class="xref py py-class docutils literal"><span class="pre">matplotlib.colors.Colormap</span></code> instance) &#8211; colormap to use for the N-level colormap</li>
+<li><strong>extend</strong> (<em>string</em>) &#8211; ({&#8216;both&#8217;} | &#8216;min&#8217; | &#8216;max&#8217; | &#8216;neither&#8217;) should the top or bottom of the colormap use an arrow to indicate &#8220;and larger&#8221; or &#8220;and smaller&#8221;</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">tuple (cmap, norm) containing a
+<code class="xref py py-class docutils literal"><span class="pre">matplotlib.colors.Colormap</span></code> object and a
+<code class="xref py py-class docutils literal"><span class="pre">matplotlib.colors.Normalize</span> <span class="pre">object</span></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">EXAMPLE</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timutils.colormap_nlevs</span> <span class="kn">import</span> <span class="n">setup_colormap_with_zeroval</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mycmap</span><span class="p">,</span> <span class="n">mynorm</span> <span class="o">=</span> <span class="n">setup_colormap_with_zeroval</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">nlevs</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;neither&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">mycmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">mynorm</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">((</span><span class="s1">&#39;setup_colormap_with_zeroval example</span><span class="se">\n</span><span class="s1"> data values 0 to 1; nlevs=5&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-timutils.ffmpeg_tester">
+<span id="ffmpeg-tester"></span><h2>ffmpeg_tester<a class="headerlink" href="#module-timutils.ffmpeg_tester" title="Permalink to this headline">¶</a></h2>
+<p>demo module to check that ffmpeg is available before creating an
+animation</p>
+<dl class="function">
+<dt id="timutils.ffmpeg_tester.check_for_ffmpeg">
+<code class="descclassname">timutils.ffmpeg_tester.</code><code class="descname">check_for_ffmpeg</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#timutils.ffmpeg_tester.check_for_ffmpeg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if ffmpeg is present on the system.  If ffmpeg is not
+present print a message and return False.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-timutils.io">
+<span id="io"></span><h2>io<a class="headerlink" href="#module-timutils.io" title="Permalink to this headline">¶</a></h2>
+<p>wrapper functions for input/output tasks</p>
+<dl class="function">
+<dt id="timutils.io.delete_if_exists">
+<code class="descclassname">timutils.io.</code><code class="descname">delete_if_exists</code><span class="sig-paren">(</span><em>fname</em><span class="sig-paren">)</span><a class="headerlink" href="#timutils.io.delete_if_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>remove a file if it exists, with a message to stdout</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fname</strong> (<em>string</em>) &#8211; full path of the file to be removed</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">EXAMPLE</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">delete_if_exists</span><span class="p">(</span><span class="s1">&#39;/path/to/file/file_name.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="timutils.io.get_temp_filename">
+<code class="descclassname">timutils.io.</code><code class="descname">get_temp_filename</code><span class="sig-paren">(</span><em>dir='SCRATCH'</em>, <em>prefix='tmpfile'</em>, <em>suffix='.png'</em><span class="sig-paren">)</span><a class="headerlink" href="#timutils.io.get_temp_filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>return a name for a temporary file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dir</strong> (<em>string</em>) &#8211; full path of directory for the temporary
+file. Default is $SCRATCH.</li>
+<li><strong>prefix</strong> (<em>string</em>) &#8211; prefix to place before the random string in
+the filename.  Default is &#8220;tmpfile&#8221;</li>
+<li><strong>suffix</strong> (<em>string</em>) &#8211; suffix to place after the random string in
+the filename.  Default is &#8221;.png&#8221;</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a string containing the full path to a temporary file</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">EXAMPLE</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tmp_name</span> <span class="o">=</span> <span class="n">get_temp_filename</span><span class="p">(</span><span class="nb">dir</span><span class="o">=</span><span class="s1">&#39;/tmp&#39;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-timutils.midpt_norm">
+<span id="midpt-norm"></span><h2>midpt_norm<a class="headerlink" href="#module-timutils.midpt_norm" title="Permalink to this headline">¶</a></h2>
+<p>Implement a colormap with user-specified midpoint and number of
+intervals.</p>
+<dl class="function">
+<dt id="timutils.midpt_norm.get_discrete_midpt_cmap_norm">
+<code class="descclassname">timutils.midpt_norm.</code><code class="descname">get_discrete_midpt_cmap_norm</code><span class="sig-paren">(</span><em>vmin</em>, <em>vmax</em>, <em>midpoint</em>, <em>bands_above_mdpt=5</em>, <em>bands_below_mdpt=5</em>, <em>this_cmap=&lt;matplotlib.colors.LinearSegmentedColormap object&gt;</em>, <em>extend='both'</em><span class="sig-paren">)</span><a class="headerlink" href="#timutils.midpt_norm.get_discrete_midpt_cmap_norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a colormap with user-specified midpoint and number of
+intervals.</p>
+<p>Provides a colormap and a matplotlib.colors.Normalize instance
+that implement a discrete colormap with an arbitrary midpoint.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vmin</strong> (<em>real</em>) &#8211; the minimum value in the colormap</li>
+<li><strong>vmax</strong> (<em>real</em>) &#8211; the maximum value in the colormap</li>
+<li><strong>bands_above_mdpt</strong> (<em>integer</em>) &#8211; the number of color bands above the midpoint</li>
+<li><strong>bands_below_mdpt</strong> (<em>integer</em>) &#8211; the number of color bands below the midpoint</li>
+<li><strong>this_cmap</strong> (<code class="xref py py-class docutils literal"><span class="pre">matplotlib.colors.Colormap</span></code> instance) &#8211; colormap on which to base the output colormap.  Default is <a class="reference external" href="http://matplotlib.org/examples/color/colormaps_reference.html">PuOr</a>. get_discrete_midpt_cmap_norm is intended to be used with a <a class="reference external" href="http://matplotlib.org/examples/color/colormaps_reference.html">diverging colormap</a>.</li>
+<li><strong>extend</strong> (<em>string</em>) &#8211; [&#8220;max&#8221;, &#8220;min&#8221;, {&#8220;both&#8221;}, &#8220;neither&#8221;]; whether the colorbar should reserve a color for values above vmax or below vmin.  If &#8220;neither&#8221; is selected such values are masked out and left blank.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>adapted by Timothy W. Hilton from code posted by Joe Kington to
+<a class="reference external" href="http://stackoverflow.com/questions/20144529/shifted-colorbar-matplotlib">http://stackoverflow.com/questions/20144529/shifted-colorbar-matplotlib</a>
+accessed 9 Nov 2015</p>
+<p class="rubric">EXAMPLE</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timutils.midpt_norm</span> <span class="kn">import</span> <span class="n">get_discrete_midpt_cmap_norm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">120</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="p">[</span><span class="mi">124</span><span class="p">,</span> <span class="mi">124</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fix</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mycmap</span><span class="p">,</span> <span class="n">mynorm</span> <span class="o">=</span> <span class="n">get_discrete_midpt_cmap_norm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">120</span><span class="p">,</span>
+<span class="go">                                              vmax=20,</span>
+<span class="go">                                              midpoint=0.0,</span>
+<span class="go">                                              bands_above_mdpt=6,</span>
+<span class="go">                                              bands_below_mdpt=20)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">mynorm</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">mycmap</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-timutils.scinot_format">
+<span id="scinot-format"></span><h2>scinot_format<a class="headerlink" href="#module-timutils.scinot_format" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="timutils.scinot_format.scinot_format">
+<code class="descclassname">timutils.scinot_format.</code><code class="descname">scinot_format</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#timutils.scinot_format.scinot_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>format a number into scientific notation for use in plot labels.</p>
+<p>Formats the parameter x using <span class="math">\(123 \times 10^{{-456}}\)</span>
+notation, not <span class="math">\(123\mathrm{e}-456\)</span> notation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>x</strong> (<em>real</em>) &#8211; the value to be formatted</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Yields:</th><td class="field-body">a string containing x, formatted for use in matplotlib plot
+labels</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">EXAMPLE</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timutils.scinot_format</span> <span class="kn">import</span> <span class="n">scinot_format</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">scinot_format</span><span class="p">(</span><span class="mf">1.234e-5</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">FuncFormatter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timutils.scinot_format</span> <span class="kn">import</span> <span class="n">scinot_format</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">formatter</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">tickpos</span><span class="p">):</span>
+<span class="go">        return(scinot_format(val))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mf">2.</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="mf">1e18</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">FuncFormatter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timutils.scinot_format</span> <span class="kn">import</span> <span class="n">scinot_format</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">formatter</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">tickpos</span><span class="p">):</span>
+<span class="go">        return(scinot_format(val))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span> <span class="o">*</span> <span class="mf">1e-12</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Code posted 19 Oct 2010 by Jonathan Slavin to the <a class="reference external" href="http://matplotlib.1069221.n5.nabble.com/scientific-notation-in-ticklabels-for-linear-plot-td25338.html">matplotlib -
+users listserve</a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-timutils.std_error">
+<span id="std-error"></span><h2>std_error<a class="headerlink" href="#module-timutils.std_error" title="Permalink to this headline">¶</a></h2>
+<p>module to implement standard error calculation, with optional
+effective sample size adjustment of Wilks (1995)</p>
+<p class="rubric">References</p>
+<p>Wilks, D. (1995), Statistical Methods in the Atmospheric Sciences: An
+Introduction, Academic Press, New York.</p>
+<dl class="class">
+<dt id="timutils.std_error.MeanStdError">
+<em class="property">class </em><code class="descclassname">timutils.std_error.</code><code class="descname">MeanStdError</code><span class="sig-paren">(</span><em>arr</em><span class="sig-paren">)</span><a class="headerlink" href="#timutils.std_error.MeanStdError" title="Permalink to this definition">¶</a></dt>
+<dd><p>class to implement standard error calculation on a numpy array</p>
+<dl class="method">
+<dt id="timutils.std_error.MeanStdError.calc">
+<code class="descname">calc</code><span class="sig-paren">(</span><em>dim=0</em><span class="sig-paren">)</span><a class="headerlink" href="#timutils.std_error.MeanStdError.calc" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate the standard error of the mean</p>
+<p>Calculate the standard error of the mean along a specified
+dimension of self.arr using equation (1) of Efron and Tibshirani
+(1991).  The standard error is placed in field std_err, the
+&#8220;effective sample size&#8221; standard error is placed in field
+std_err_neff, and the effective sample size is placed in field
+neff.  neff is calculated according to Wilks (1995).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dim</strong> (<em>int</em>) &#8211; the dimension of self.arr along which the mean,
+standard error should be calculated</li>
+<li><strong>adjust_n</strong> (<em>boolean</em>) &#8211; if True, use the &#8220;effective sample size&#8221; of Wilks
+(1995) to account for autocorrelation in the data.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<dl class="docutils">
+<dt>Efron, B. &amp; Tibshirani, R., 1991.  Statistical Data Analysis</dt>
+<dd>in the Computer Age.  Science, 253, 5018, p 390- 395.</dd>
+<dt>Wilks, D., 1995 Statistical Methods in the Atmospheric</dt>
+<dd>Sciences: An Introduction.  Academic Press, New York</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="timutils.std_error.calc_autocorr">
+<code class="descclassname">timutils.std_error.</code><code class="descname">calc_autocorr</code><span class="sig-paren">(</span><em>arr</em>, <em>dim=0</em>, <em>lag=1</em><span class="sig-paren">)</span><a class="headerlink" href="#timutils.std_error.calc_autocorr" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate lag-1 autocorrelation along an array dimension</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>arr</strong> (<em>array-like</em>) &#8211; numpy array of numeric values</li>
+<li><strong>dim</strong> (<em>int</em>) &#8211; the dimension of arr along which the autocorrelation should be
+calculated.  Default is 0.</li>
+<li><strong>lag</strong> (<em>int</em>) &#8211; lag to use for autocorrelation calculation.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">effective sample size accounting for lag-1 autocorrelation</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">array-like</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="timutils.std_error.calc_neff">
+<code class="descclassname">timutils.std_error.</code><code class="descname">calc_neff</code><span class="sig-paren">(</span><em>arr</em>, <em>dim=0</em><span class="sig-paren">)</span><a class="headerlink" href="#timutils.std_error.calc_neff" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate effective sample size accounting for lag-1 autocorrelation</p>
+<p>Effective sample size is calculated according to Wilks (1995).  If
+arr is multi-dimensional it is flattened first</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>arr</strong> (<em>array-like</em>) &#8211; numpy array of numeric values</li>
+<li><strong>dim</strong> (<em>int</em>) &#8211; the dimension of arr along which the effective sample size
+should be calculated.  Default is 0.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">effective sample size accounting for lag-1 autocorrelation</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<p>Wilks, D., 1995 Statistical Methods in the Atmospheric Sciences:
+An Introduction.  Academic Press, New York</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="timutils.std_error.calc_std_err">
+<code class="descclassname">timutils.std_error.</code><code class="descname">calc_std_err</code><span class="sig-paren">(</span><em>arr</em>, <em>dim=0</em>, <em>n=None</em><span class="sig-paren">)</span><a class="headerlink" href="#timutils.std_error.calc_std_err" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate standard error of the mean</p>
+<p>Calculates standard error of the mean for an array along a
+specified axis.  Uses the definition given by Efron and Tibshirani
+(1991) equation 1.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>arr</strong> (<em>array-like</em>) &#8211; numpy array of numeric values dim (int): the dimension of arr
+along which the effective sample size should be
+calculated. Default is 0.</li>
+<li><strong>n</strong> (<em>array-like</em>) &#8211; value of n to be used for each element of arr along axis
+dim. Default is the number of elements along axis dim of arr
+(i.e. arr.shape[dim]).  That is, the default is to treat each
+element of arr as an independent data point.  A different
+value of n may be useful to, for example, account for
+autocorrelation in arr (see function calc_autocorr).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A numpy array containing standard error of the mean along axis
+dim of arr.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">array-like</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<p>Efron, B. &amp; Tibshirani, R., 1991.  Statistical Data Analysis in
+the Computer Age.  Science, 253, 5018, p 390- 395.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Welcome to TimPyUtils&#8217;s documentation!</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#module-documentation">Module documentation</a><ul>
+<li><a class="reference internal" href="#module-timutils.colorbar_from_cmap_norm">colorbar_from_cmap_norm</a></li>
+<li><a class="reference internal" href="#module-timutils.colormap_nlevs">colormap_nlevs</a></li>
+<li><a class="reference internal" href="#module-timutils.ffmpeg_tester">ffmpeg_tester</a></li>
+<li><a class="reference internal" href="#module-timutils.io">io</a></li>
+<li><a class="reference internal" href="#module-timutils.midpt_norm">midpt_norm</a></li>
+<li><a class="reference internal" href="#module-timutils.scinot_format">scinot_format</a></li>
+<li><a class="reference internal" href="#module-timutils.std_error">std_error</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">TimPyUtils 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Timothy W. Hilton.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
