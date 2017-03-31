@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Welcome to TimPyUtils’s documentation! &mdash; TimPyUtils 1.0 documentation</title>
+    <title>Welcome to TimPyUtils’s documentation! &#8212; TimPyUtils 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -17,14 +17,16 @@
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="TimPyUtils 1.0 documentation" href="#" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -36,7 +38,7 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">TimPyUtils 1.0 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="#">TimPyUtils 1.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -52,16 +54,14 @@ written myself and some (as noted in the documentation) I have
 scrounged from the web.</p>
 <p>The source code is available from <a class="reference external" href="https://github.com/Timothy-W-Hilton/TimPyUtils">GitHub</a>.</p>
 <div class="toctree-wrapper compound">
-<ul class="simple">
-</ul>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span>Index</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span>Module Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span>Search Page</span></a></li>
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
 </div>
 <div class="section" id="module-documentation">
@@ -109,8 +109,8 @@ colorbar</li>
 </tbody>
 </table>
 <p class="rubric">EXAMPLE</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">my_cmap</span><span class="p">,</span> <span class="n">my_norm</span> <span class="o">=</span> <span class="n">colormap_nlevs</span><span class="o">.</span><span class="n">setup_colormap</span><span class="p">(</span>
 <span class="go">    data.min(), data.max(),</span>
@@ -205,9 +205,9 @@ constant intervals between the vmin and vmax.</p>
 </tbody>
 </table>
 <p class="rubric">EXAMPLE</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timutils.colormap_nlevs</span> <span class="kn">import</span> <span class="n">setup_colormap_with_zeroval</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timutils.colormap_nlevs</span> <span class="k">import</span> <span class="n">setup_colormap_with_zeroval</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mycmap</span><span class="p">,</span> <span class="n">mynorm</span> <span class="o">=</span> <span class="n">setup_colormap_with_zeroval</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">nlevs</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;neither&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -248,7 +248,7 @@ present print a message and return False.</p>
 </tbody>
 </table>
 <p class="rubric">EXAMPLE</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">delete_if_exists</span><span class="p">(</span><span class="s1">&#39;/path/to/file/file_name.txt&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">delete_if_exists</span><span class="p">(</span><span class="s1">&#39;/path/to/file/file_name.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -282,7 +282,7 @@ the filename.  Default is &#8221;.png&#8221;</li>
 </tbody>
 </table>
 <p class="rubric">EXAMPLE</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tmp_name</span> <span class="o">=</span> <span class="n">get_temp_filename</span><span class="p">(</span><span class="nb">dir</span><span class="o">=</span><span class="s1">&#39;/tmp&#39;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;.txt&#39;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tmp_name</span> <span class="o">=</span> <span class="n">get_temp_filename</span><span class="p">(</span><span class="nb">dir</span><span class="o">=</span><span class="s1">&#39;/tmp&#39;</span><span class="p">,</span> <span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;.txt&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -319,9 +319,9 @@ that implement a discrete colormap with an arbitrary midpoint.</p>
 <a class="reference external" href="http://stackoverflow.com/questions/20144529/shifted-colorbar-matplotlib">http://stackoverflow.com/questions/20144529/shifted-colorbar-matplotlib</a>
 accessed 9 Nov 2015</p>
 <p class="rubric">EXAMPLE</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timutils.midpt_norm</span> <span class="kn">import</span> <span class="n">get_discrete_midpt_cmap_norm</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timutils.midpt_norm</span> <span class="k">import</span> <span class="n">get_discrete_midpt_cmap_norm</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">120</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="p">[</span><span class="mi">124</span><span class="p">,</span> <span class="mi">124</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fix</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -350,26 +350,31 @@ notation, not <span class="math">\(123\mathrm{e}-456\)</span> notation.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>x</strong> (<em>real</em>) &#8211; the value to be formatted</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x</strong> (<em>real</em>) &#8211; the value to be formatted</p>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Yields:</th><td class="field-body">a string containing x, formatted for use in matplotlib plot
-labels</td>
+<tr class="field-even field"><th class="field-name">Yields:</th><td class="field-body"><dl class="first last docutils">
+<dt>a string containing x, formatted for use in matplotlib plot</dt>
+<dd><p class="first last">labels</p>
+</dd>
+</dl>
+</td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">EXAMPLE</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timutils.scinot_format</span> <span class="kn">import</span> <span class="n">scinot_format</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">scinot_format</span><span class="p">(</span><span class="mf">1.234e-5</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timutils.scinot_format</span> <span class="k">import</span> <span class="n">scinot_format</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">scinot_format</span><span class="p">(</span><span class="mf">1.234e-5</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">FuncFormatter</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timutils.scinot_format</span> <span class="kn">import</span> <span class="n">scinot_format</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="k">import</span> <span class="n">FuncFormatter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timutils.scinot_format</span> <span class="k">import</span> <span class="n">scinot_format</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">formatter</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">tickpos</span><span class="p">):</span>
 <span class="go">        return(scinot_format(val))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mf">2.</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="mf">1e18</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="mi">1</span><span class="n">e18</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
@@ -377,21 +382,75 @@ labels</td>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">FuncFormatter</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timutils.scinot_format</span> <span class="kn">import</span> <span class="n">scinot_format</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="k">import</span> <span class="n">FuncFormatter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timutils.scinot_format</span> <span class="k">import</span> <span class="n">scinot_format</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">formatter</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">tickpos</span><span class="p">):</span>
 <span class="go">        return(scinot_format(val))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span> <span class="o">*</span> <span class="mf">1e-12</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span> <span class="o">*</span> <span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">12</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>Code posted 19 Oct 2010 by Jonathan Slavin to the <a class="reference external" href="http://matplotlib.1069221.n5.nabble.com/scientific-notation-in-ticklabels-for-linear-plot-td25338.html">matplotlib -
 users listserve</a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-timutils.splitpath">
+<span id="splitpath"></span><h2>splitpath<a class="headerlink" href="#module-timutils.splitpath" title="Permalink to this headline">¶</a></h2>
+<p>functions to help separate paths to components</p>
+<p>splitall() returns a list of strings, each string containing one
+component of the path.</p>
+<p>to_ospathjoin() wraps the components into an os.path.join() call</p>
+<p>splitpath.splitall() is from <a class="reference external" href="https://www.safaribooksonline.com/library/view/python-cookbook/0596001673/ch04s16.html">Python Cookbook</a> by David Ascher, Alex Martelli, accessed 31 Mar 2017</p>
+<dl class="function">
+<dt id="timutils.splitpath.splitall">
+<code class="descclassname">timutils.splitpath.</code><code class="descname">splitall</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#timutils.splitpath.splitall" title="Permalink to this definition">¶</a></dt>
+<dd><p>split path into a list of strings, one path component per string</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>str</em>) &#8211; a path</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list of strings, one path component per string</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">EXAMPLE</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">splitall</span><span class="p">(</span><span class="s1">&#39;/some/path/to/some/file.txt&#39;</span><span class="p">)</span>
+<span class="go">    [&#39;/&#39;, &#39;some&#39;, &#39;path&#39;, &#39;to&#39;, &#39;some&#39;, &#39;file.txt&#39;]</span>
+</pre></div>
+</div>
+<p>Authors: David Ascher and Alex Martelli, published in <a class="reference external" href="https://www.safaribooksonline.com/library/view/python-cookbook/0596001673/ch04s16.html">Python
+Cookbook</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="timutils.splitpath.to_ospathjoin">
+<code class="descclassname">timutils.splitpath.</code><code class="descname">to_ospathjoin</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#timutils.splitpath.to_ospathjoin" title="Permalink to this definition">¶</a></dt>
+<dd><p>reformat a path to a os.path.join call</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<em>str</em>) &#8211; a path</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a string containing the elements of path wrapped in a call to
+os.path.join()</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">EXAMPLE</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">to_ospathjoin</span><span class="p">(</span><span class="s1">&#39;/some/path/to/some/file.txt&#39;</span><span class="p">)</span>
+<span class="go">    &quot;os.path.join(&#39;/&#39;, &#39;some&#39;, &#39;path&#39;, &#39;to&#39;, &#39;some&#39;, &#39;file.txt&#39;)&quot;</span>
+</pre></div>
+</div>
+<p>Author: Timothy W. Hilton, UC Merced</p>
 </dd></dl>
 
 </div>
@@ -555,6 +614,7 @@ the Computer Age.  Science, 253, 5018, p 390- 395.</p>
 <li><a class="reference internal" href="#module-timutils.io">io</a></li>
 <li><a class="reference internal" href="#module-timutils.midpt_norm">midpt_norm</a></li>
 <li><a class="reference internal" href="#module-timutils.scinot_format">scinot_format</a></li>
+<li><a class="reference internal" href="#module-timutils.splitpath">splitpath</a></li>
 <li><a class="reference internal" href="#module-timutils.std_error">std_error</a></li>
 </ul>
 </li>
@@ -563,21 +623,18 @@ the Computer Age.  Science, 253, 5018, p 390- 395.</p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/index.txt"
+      <li><a href="_sources/index.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -593,12 +650,12 @@ the Computer Age.  Science, 253, 5018, p 390- 395.</p>
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">TimPyUtils 1.0 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="#">TimPyUtils 1.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2016, Timothy W. Hilton.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+        &#169; Copyright 2016, Timothy W. Hilton.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
     </div>
   </body>
 </html>

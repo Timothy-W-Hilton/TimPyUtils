@@ -16,16 +16,17 @@ def splitall(path):
     """split path into a list of strings, one path component per string
 
     ARGS:
-    path (str): a path
+        path (str): a path
 
     RETURNS:
-    a list of strings, one path component per string
+        a list of strings, one path component per string
 
     EXAMPLE:
-    >>> splitall('/some/path/to/some/file.txt')
+        >>> splitall('/some/path/to/some/file.txt')
+            ['/', 'some', 'path', 'to', 'some', 'file.txt']
 
-    AUTHORS:
-    David Ascher and Alex Martelli, published in `Python Cookbook
+    Authors: David Ascher and Alex Martelli, published in `Python
+    Cookbook
     <https://www.safaribooksonline.com/library/view/python-cookbook/0596001673/ch04s16.html>`_
     """
     allparts = []
@@ -47,17 +48,17 @@ def to_ospathjoin(path):
     """reformat a path to a os.path.join call
 
     ARGS:
-    path (str): a path
+        path (str): a path
 
     RETURNS:
-    a string containing the elements of path wrapped in a call to
-    os.path.join()
+        a string containing the elements of path wrapped in a call to
+        os.path.join()
 
     EXAMPLE:
-    >>> to_ospathjoin('/some/path/to/some/file.txt')
+        >>> to_ospathjoin('/some/path/to/some/file.txt')
+            "os.path.join('/', 'some', 'path', 'to', 'some', 'file.txt')"
 
-    AUTHOR:
-    Timothy W. Hilton, UC Merced
+    Author: Timothy W. Hilton, UC Merced
     """
     components = splitall(path)
     cmd = "os.path.join('{}'".format(components[0])

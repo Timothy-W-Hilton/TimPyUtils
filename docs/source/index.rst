@@ -56,6 +56,11 @@ scinot_format
 .. automodule:: timutils.scinot_format
    :members:
 
+splitpath
+-------------
+.. automodule:: timutils.splitpath
+   :members:
+
 std_error
 ---------
 .. automodule:: timutils.std_error
