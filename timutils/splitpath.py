@@ -1,13 +1,12 @@
-"""functions separate paths to components
+"""functions to help separate paths to components
 
 splitall() returns a list of strings, each string containing one
 component of the path.
 
-to_ospathjoin wraps the components into an os.path.join() call
+to_ospathjoin() wraps the components into an os.path.join() call
 
-splitall is from Python Cookbook by David Ascher, Alex Martelli
-https://www.safaribooksonline.com/library/view/python-cookbook/0596001673/ch04s16.html
-accessed 31 Mar 2017
+splitpath.splitall() is from `Python Cookbook <https://www.safaribooksonline.com/library/view/python-cookbook/0596001673/ch04s16.html>`_ by David Ascher, Alex Martelli, accessed 31 Mar 2017
+
 """
 
 import os
@@ -22,8 +21,11 @@ def splitall(path):
     RETURNS:
     a list of strings, one path component per string
 
-    AUTHORS: David Ascher and Alex Martelli, published in `Python
-    Cookbook
+    EXAMPLE:
+    >>> splitall('/some/path/to/some/file.txt')
+
+    AUTHORS:
+    David Ascher and Alex Martelli, published in `Python Cookbook
     <https://www.safaribooksonline.com/library/view/python-cookbook/0596001673/ch04s16.html>`_
     """
     allparts = []
@@ -49,7 +51,13 @@ def to_ospathjoin(path):
 
     RETURNS:
     a string containing the elements of path wrapped in a call to
-        os.path.join()
+    os.path.join()
+
+    EXAMPLE:
+    >>> to_ospathjoin('/some/path/to/some/file.txt')
+
+    AUTHOR:
+    Timothy W. Hilton, UC Merced
     """
     components = splitall(path)
     cmd = "os.path.join('{}'".format(components[0])
