@@ -58,4 +58,4 @@ def scinot_format(x):
         # Here we truncate to 2 significant digits -- may not be enough
         # in all cases
         s = '$' + str('%.5f'%mn) + '\\times 10^{'+str(xp)+'}$'
-    return s
+    return(s)

@@ -103,7 +103,7 @@ def calc_std_err(arr, dim=0, n=None):
     x_bar = np.mean(arr, axis=dim).squeeze()
     # calculate standard error according to Efron & Tibshirani (1991) eq 1.
     se = np.sqrt(np.sum(np.square(arr - x_bar), dim) / (n * (n - 1)))
-    return se
+    return(se)
 
 
 def calc_neff(arr, dim=0):
@@ -134,7 +134,7 @@ def calc_neff(arr, dim=0):
     rho = calc_autocorr(arr, dim, lag=1)
     n = arr.shape[dim]
     neff = n * ((1 - rho) / (1 + rho))
-    return neff
+    return(neff)
 
 
 def calc_autocorr(arr, dim=0, lag=1):
@@ -158,7 +158,7 @@ def calc_autocorr(arr, dim=0, lag=1):
 
     """
     rho = np.apply_along_axis(_autocorr_helper, axis=dim, arr=arr, lag=lag)
-    return rho
+    return(rho)
 
 
 def _autocorr_helper(arr1d, lag):
@@ -178,4 +178,4 @@ def _autocorr_helper(arr1d, lag):
     array-like
     	A numpy array containing the lag-(lag) autocorrelation of arr1d
     """
-    return pd.Series(arr1d).autocorr(lag=lag)
+    return(pd.Series(arr1d).autocorr(lag=lag))

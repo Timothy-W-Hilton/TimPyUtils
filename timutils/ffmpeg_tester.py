@@ -28,4 +28,4 @@ def check_for_ffmpeg():
     except OSError:
         print(not_found_msg)
 
-    return return_code is 0
+    return(return_code is 0)

@@ -56,4 +56,4 @@ def get_temp_filename(dir="SCRATCH", prefix='tmpfile', suffix='.png'):
                                      prefix=prefix, suffix=suffix) as tmpfile:
         temp_file_name = tmpfile.name
 
-    return temp_file_name
+    return(temp_file_name)

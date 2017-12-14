@@ -152,7 +152,7 @@ class _MidpointNormalize(Normalize):
                                         num=4)[1:]])
         print('x, y:', np.dstack([x, y]))
         # x, y = [self.vmin, self.midpoint, self.vmax], [0, 0.5, 1]  #
-        return np.ma.masked_array(np.interp(value, x, y))
+        return(np.ma.masked_array(np.interp(value, x, y)))
 
 
 class __PiecewiseLinearNorm(Normalize):
@@ -219,7 +219,7 @@ class __PiecewiseLinearNorm(Normalize):
 
         if is_scalar:
             result = np.atleast_1d(result)[0]
-        return result
+        return(result)
 
     def autoscale_None(self, A):
         ' autoscale only None-valued vmin or vmax'

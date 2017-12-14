@@ -41,7 +41,7 @@ def splitall(path):
         else:
             path = parts[0]
             allparts.insert(0, parts[1])
-    return allparts
+    return(allparts)
 
 
 def to_ospathjoin(path):
@@ -65,4 +65,4 @@ def to_ospathjoin(path):
     for this in components[1:]:
         cmd = cmd + ", '{}'".format(this)
     cmd = cmd + ')'
-    return cmd
+    return(cmd)
