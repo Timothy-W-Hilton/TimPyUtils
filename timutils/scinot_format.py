@@ -16,7 +16,7 @@ def scinot_format(x):
 
     EXAMPLE:
         >>> from timutils.scinot_format import scinot_format
-        >>> print scinot_format(1.234e-5)
+        >>> print(scinot_format(1.234e-5))
 
         >>> import matplotlib.pyplot as plt
         >>> import numpy as np
@@ -57,5 +57,5 @@ def scinot_format(x):
         mn = x/10.**xp
         # Here we truncate to 2 significant digits -- may not be enough
         # in all cases
-        s = '$'+str('%.1f'%mn) +'\\times 10^{'+str(xp)+'}$'
+        s = '$' + str('%.5f'%mn) + '\\times 10^{'+str(xp)+'}$'
     return s

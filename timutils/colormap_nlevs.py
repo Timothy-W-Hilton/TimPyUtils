@@ -41,7 +41,7 @@ def setup_colormap(vmin, vmax, nlevs=5,
     >>> plt.show()
 
     """
-    print 'setting up colormaps'
+    print('setting up colormaps')
     # Pick some of the nicer colors from the palette...
     if extend is "neither":
         ncolors = nlevs - 1

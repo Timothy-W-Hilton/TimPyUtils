@@ -150,7 +150,7 @@ class _MidpointNormalize(Normalize):
                             np.linspace(start=0.5,
                                         stop=1.0,
                                         num=4)[1:]])
-        print 'x, y:', np.dstack([x, y])
+        print('x, y:', np.dstack([x, y]))
         # x, y = [self.vmin, self.midpoint, self.vmax], [0, 0.5, 1]  #
         return np.ma.masked_array(np.interp(value, x, y))
 

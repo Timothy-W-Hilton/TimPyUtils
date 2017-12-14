@@ -26,6 +26,6 @@ def check_for_ffmpeg():
                                             stdout=FNULL,
                                             stderr=subprocess.STDOUT)
     except OSError:
-        print not_found_msg
+        print(not_found_msg)
 
     return return_code is 0
