@@ -12,6 +12,7 @@ import warnings
 def get_discrete_midpt_cmap_norm(vmin, vmax, midpoint,
                                  bands_above_mdpt=5,
                                  bands_below_mdpt=5,
+                                 remove_middle_color=False,
                                  this_cmap=plt.get_cmap('PuOr'),
                                  extend='both'):
     """Create a colormap with user-specified midpoint and number of
@@ -25,7 +26,15 @@ def get_discrete_midpt_cmap_norm(vmin, vmax, midpoint,
         vmax (real): the maximum value in the colormap
         bands_above_mdpt (integer): the number of color bands above the midpoint
         bands_below_mdpt (integer): the number of color bands below the midpoint
-        this_cmap (:class:`matplotlib.colors.Colormap` instance): colormap on which to base the output colormap.  Default is `PuOr <http://matplotlib.org/examples/color/colormaps_reference.html>`_. get_discrete_midpt_cmap_norm is intended to be used with a `diverging colormap <http://matplotlib.org/examples/color/colormaps_reference.html>`_.
+           remove_middle_color (logical): if True, the middle range of
+           the colormap is excluded.  This effectively removes the white
+           part of many diverging colormaps.
+        this_cmap (:class:`matplotlib.colors.Colormap` instance):
+           colormap on which to base the output colormap.  Default is
+           `PuOr
+           <http://matplotlib.org/examples/color/colormaps_reference.html>`_. get_discrete_midpt_cmap_norm
+           is intended to be used with a `diverging colormap
+           <http://matplotlib.org/examples/color/colormaps_reference.html>`_.
         extend (string): ["max", "min", {"both"}, "neither"]; whether the colorbar should reserve a color for values above vmax or below vmin.  If "neither" is selected such values are masked out and left blank.
 
     adapted by Timothy W. Hilton from code posted by Joe Kington to
@@ -55,10 +64,16 @@ def get_discrete_midpt_cmap_norm(vmin, vmax, midpoint,
                         np.linspace(start=midpoint,
                                     stop=vmax,
                                     num=bands_above_mdpt)])
+    if remove_middle_color:
+        low_stop = 0.4
+        high_start = 0.6
+    else:
+        low_stop = 0.5
+        high_start = 0.5
     y = np.concatenate([np.linspace(start=0.0,
-                                    stop=0.5,
+                                    stop=low_stop,
                                     num=bands_below_mdpt+1)[:-1],
-                        np.linspace(start=0.5,
+                        np.linspace(start=high_start,
                                     stop=1.0,
                                     num=bands_above_mdpt)])
 
