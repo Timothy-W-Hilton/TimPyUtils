@@ -6,11 +6,11 @@ except ImportError:
 config = {
     'description': 'A collection of utilities I find useful',
     'author': 'Timothy W. Hilton',
-    'url': 'thilton@ucmerced.edu',
-    'download_url': 'thilton@ucmerced.edu',
-    'author_email': 'thilton@ucmerced.edu',
+    'url': 'https://timothy-w-hilton.github.io/TimPyUtils/',
+    'download_url': 'https://github.com/Timothy-W-Hilton/TimPyUtils',
+    'author_email': 'twhilton@ucsc.edu',
     'version': '1.0',
-    'install_requires': ['nose', 'numpy', 'matplotlib'],
+    'install_requires': ['nose', 'numpy', 'matplotlib', 'gitpython'],
     'packages': ['timutils'],
     'scripts': [],
     'name': 'timutils'
